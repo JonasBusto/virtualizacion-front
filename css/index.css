@@ -1,0 +1,140 @@
+@import url("https://fonts.cdnfonts.com/css/action-man");
+
+a,
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: "Action Man", sans-serif !important; */
+}
+
+.body-custom {
+  background-color: #1f2937;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.div-nav {
+  background-color: #1f2937;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0rem;
+  position: sticky;
+  top: 0;
+}
+
+.div-nav a {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #e7562e;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-decoration: none;
+  transition: 0.7s ease-in-out;
+}
+
+.div-nav a:hover {
+  color: #e7762e;
+  text-decoration: underline;
+}
+
+.contain-main p {
+  color: #f9fafb;
+  margin: 0;
+}
+
+.p-title {
+  font-weight: 700;
+  font-size: 2.8rem;
+}
+
+.contain-hola img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+
+.info-personal,
+.temas {
+  margin: 2rem;
+  border-bottom: 4px solid #f9fafb;
+}
+
+.info p {
+  font-size: 1.3rem;
+}
+
+.acerca > p {
+  font-weight: 300;
+  font-size: 1.8rem;
+}
+
+.container-list li {
+  color: #f9fafb;
+  font-size: 1.2rem;
+  font-weight: 200;
+  line-height: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.container-list li::marker {
+  font-size: 0.9rem;
+}
+
+.contacto-email p {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.contacto-email p > a {
+  color: #73cffa;
+  font-weight: 700;
+}
+
+.temas > p {
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: end;
+}
+
+.container-info-blog {
+  margin-top: 2rem;
+}
+
+.container-info-blog > p {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.container-item-blog {
+  width: 70vw;
+  margin: 1rem auto;
+  border-bottom: 0.5px solid #b7b7b7;
+  padding-bottom: 1rem;
+}
+
+.container-item-blog img {
+  object-fit: cover;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 1rem;
+  /* margin: 0 1rem; */
+}
+
+.title-item > b {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.info-item {
+  font-size: 0.7rem;
+}
+
+@media (min-width: 900px) {
+  .container-item-blog {
+    width: 650px;
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>Blog Personal - Virtualización 2023</title>
+  </head>
+  <body class="body-custom">
+    <div class="div-nav">
+      <a href="#temas-anchor">Temas</a>
+      <a href="#hola-anchor">Sobre mi</a>
+      <a href="#tpfinal-anchor">TP final</a>
+    </div>
+    <div class="d-flex flex-column contain-main mt-5">
+      <div
+        id="hola-anchor"
+        class="d-flex p-title contain-hola align-items-center justify-content-end"
+      >
+        <p>HOLA 👋🏻</p>
+        <img
+          class="img-fluid"
+          src="https://drive.google.com/uc?export=view&id=1EemG9V23wiT_tado0MqbqQ8BoUY7vKFO"
+          alt=""
+        />
+      </div>
+      <div class="info-personal" id="info-personal-div"></div>
+      <div class="temas mt-5" id="temas-anchor">
+        <p>¿Como se creo el Blog?</p>
+        <div class="d-flex flex-column container-info-blog">
+          <p>Resumen</p>
+          <div>
+            <p>
+              El blog personal consta de una estructura básica definida en
+              secciones, que organizan la información necesaria y requerida por
+              la materia. Se empleo HTML, CSS y JavaScript para la creación del
+              Frontend del blog, y NodeJs como MongoDB para el Backend, donde
+              ambas partes fueron subidas a los contenedores de Proxmox.
+            </p>
+          </div>
+        </div>
+        <div class="d-flex flex-column container-info-blog">
+          <p>Herramientas</p>
+          <div class="d-flex flex-column" id="container-herramientas"></div>
+        </div>
+        <div class="d-flex flex-column container-info-blog">
+          <p>Configurar Proxmox</p>
+          <div class="d-flex"></div>
+        </div>
+      </div>
+      <div id="tpfinal-anchor">
+        <p>TFI</p>
+        <div></div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" src="./script/index.js"></script>
+</html>
