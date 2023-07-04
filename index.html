@@ -51,12 +51,94 @@
         </div>
         <div class="d-flex flex-column container-info-blog">
           <p>Configurar Proxmox</p>
-          <div class="d-flex"></div>
+          <div class="d-flex flex-column">
+            <p>
+              La creación del blog requiere de una configuración previa de los
+              contenedores de Proxmox. Para ello, se instalan las herramientas
+              necesarias en cada contenedor, tanto para FE como BE, y se sube el
+              contenido de ambos en cada CT. A continuación, se detalla un orden
+              de instalación de dichos componentes:
+            </p>
+            <div class="d-flex flex-column my-4 container-items-timeline">
+              <a
+                href="/pages/contenedores.html"
+                class="d-flex align-items-center item-timeline"
+              >
+                <div class="timeline-primary">
+                  <div></div>
+                </div>
+                <div class="item-proxmox">
+                  <p>Contenedores (CT)</p>
+                </div>
+                <div class="timeline-xl-1">
+                  <div></div>
+                </div>
+              </a>
+              <a
+                href="/pages/instalacionHerramientas.html"
+                class="d-flex align-items-center justify-content-xl-end item-timeline"
+              >
+                <div class="timeline-primary">
+                  <div></div>
+                </div>
+                <div class="timeline-xl-2">
+                  <div></div>
+                </div>
+                <div class="item-proxmox">
+                  <p>Apache, MongoDB y NodeJS</p>
+                </div>
+              </a>
+              <a
+                href="/pages/frontend.html"
+                class="d-flex align-items-center item-timeline"
+              >
+                <div class="timeline-primary">
+                  <div></div>
+                </div>
+                <div class="item-proxmox">
+                  <p>Frontend</p>
+                </div>
+                <div class="timeline-xl-3">
+                  <div></div>
+                </div>
+              </a>
+              <a
+                href="/pages/backend.html"
+                class="d-flex align-items-center justify-content-xl-end item-timeline"
+              >
+                <div class="timeline-primary">
+                  <div></div>
+                </div>
+                <div class="timeline-xl-4">
+                  <div></div>
+                </div>
+                <div class="item-proxmox">
+                  <p>Backend</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div id="tpfinal-anchor">
-        <p>TFI</p>
-        <div></div>
+      <div class="tp-container" id="tpfinal-anchor">
+        <p>Trabajo Practico Final</p>
+        <div class="d-flex flex-column container-tp-info">
+          <p>Sobre el TP final</p>
+          <div>
+            <p>
+              A continuación, se visualiza el TP Final, el cual podra tambien
+              ser descargado:
+            </p>
+          </div>
+          <div class="mt-4">
+            <embed
+              src="https://drive.google.com/uc?export=view&id=1xsuBxg6c239KTp2twcU5U1FweC0jbg37"
+              type="application/pdf"
+              width="100%"
+              height="600px"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </body>
