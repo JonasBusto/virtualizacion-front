@@ -173,9 +173,11 @@ p {
   margin-right: 1rem;
   position: absolute;
   border-radius: 10px;
+  transition: 0.6s all ease-in-out;
 }
 
 .timeline-primary > div {
+  transition: 0.6s all ease-in-out;
   width: 2rem;
   height: 2rem;
   border-radius: 100%;
@@ -206,6 +208,23 @@ p {
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer > p {
+  margin: 0;
+  color: #e7562e;
+  font-weight: bold;
+  padding: 0.7rem;
+}
+
+.footer > p:hover {
+  color: #e7762e;
+  cursor: pointer;
 }
 
 @media (min-width: 900px) {
