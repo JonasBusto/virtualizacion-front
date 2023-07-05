@@ -1,0 +1,35 @@
+p {
+  color: #f9fafb;
+  margin: 0;
+}
+
+.ct-container {
+  margin: 2rem;
+}
+
+.ct-container > p {
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: end;
+}
+
+.ct-container h5,
+.ct-container h6 {
+  color: #f9fafb;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.ct-container > div > div p {
+  font-size: 0.9rem;
+}
+
+.p-title-custom {
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+.ct-list > li {
+  color: #f9fafb;
+}

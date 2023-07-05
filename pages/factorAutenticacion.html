@@ -19,8 +19,164 @@
       <a href="/index.html">Sobre mi</a>
       <a href="/index.html">TP final</a>
     </div>
-    <div>
+    <div class="fa-container">
       <p>Factor de autenticación</p>
+      <div>
+        <p class="p-title-custom">Primer inicio de sesión</p>
+        <p>
+          En la catedra de virtualización, el docente a cargo nos creó un
+          usuario para el acceso a la plataforma
+          <b>Proxmox</b> mediante el uso de nuestro <b>DNI</b>. Es decir, tanto
+          <b>nombre de usuario</b> como <b>contraseña</b> era el propio DNI.
+          Luego de iniciar sesión, se nos solicito cambiar la contraseña que
+          venía por defecto, por una nueva, que era personal. De esta, el
+          siguiente paso era habilitar el doble factor de autenticación, es
+          decir una segunda <b>"contraseña"</b> para el inicio de sesión.
+        </p>
+        <div>
+          <h5>
+            Paso 1: Ingresar los datos correspondientes en la ventana de Logueo.
+          </h5>
+          <p>
+            Si es alumno de la catedra y debe ingresar por 1era vez a la
+            plataforma <b>Proxmox</b>, cargue en ambos campos su <b>DNI</b>.
+            Luego presione en <b>Login</b>
+          </p>
+          <p>
+            <b>Nota 1: </b> Debe tener un usuario creado en la plataforma. Si no
+            es el caso, solicite al profesor un usuario brindandole su
+            <b>DNI</b> y repita el <b>Paso 1</b>.
+          </p>
+          <p>
+            <b>Nota 2: </b> Puede cambiar el lenguaje de la plataforma con el
+            que desea trabajar.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1r5GmQSu0fmCY7Hz_SrSIK8DzfEsG9zqN"
+          />
+        </div>
+        <hr />
+        <div>
+          <h5>Paso 2: Ingresar a la administración del usuario.</h5>
+          <p>
+            Haga click en la parte superior derecha de la ventana (<i
+              >aparecerá en gris un botón con el nombre de su usuario, en este
+              caso su <b>DNI</b></i
+            >).
+          </p>
+          <p>
+            <b>Nota: </b> Puede realizar este paso las veces que sea necesario.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1fC5h4UDdnwKxGe70922um0g_CYEcbDfk"
+          />
+        </div>
+        <hr />
+        <div>
+          <h5>Paso 3: Cambiar contraseña.</h5>
+          <p>
+            Se abrirá una ventana. En ella vera las siguientes opciones:
+            <b>My setting, Password, TFA, Language, Logout</b>. Debe seleccionar
+            la opción <b>Password</b>.
+          </p>
+          <p>
+            <b>Nota: </b> Puede realizar este paso las veces que sea necesario.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1DMxFt4mo3gHvakVnL39vp9RWKtwlI4Uc"
+          />
+          <p>
+            Una vez entre a la pestaña <b>Password</b> debe ingresar su nueva
+            contraseña, en los campos <b>Password</b> y <b>Confirm password</b>.
+            Luego presione en <b>Ok</b>.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1qxJHbYcrefTIfQksROkMNJDhpMBQZDx7"
+          />
+          <h6>De esa forma, modifico su contraseña actual por una nueva.</h6>
+        </div>
+        <hr />
+        <p class="p-title-custom">
+          ¿Qué es el factor de doble autenticación (TFA) y como activarlo?
+        </p>
+        <p>
+          La doble autenticación se trata de un sistema que complementa la
+          autenticación tradicional en los servicios, en este caso a
+          <b>Proxmox</b>. En otras palabras, además de requerir un nombre de
+          usuario y contraseña, solicita el ingreso de un segundo factor de
+          autenticación, como por ejemplo, un código de seguridad. A
+          continuación, se mostrará como activar el TFA en la <b>Proxmox</b>.
+        </p>
+        <div>
+          <h5>Paso 1: Ingresar a la administración del usuario.</h5>
+          <p>
+            Haga click en la parte superior derecha de la ventana (<i
+              >aparecerá en gris un botón con el nombre de su usuario, en este
+              caso su <b>DNI</b></i
+            >).
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1fC5h4UDdnwKxGe70922um0g_CYEcbDfk"
+          />
+        </div>
+        <hr />
+        <div>
+          <h5>Paso 2: Escanear QR.</h5>
+          <p>
+            Se abrirá una ventana. En ella vera las siguientes opciones:
+            <b>My setting, Password, TFA, Language, Logout</b>. Debe seleccionar
+            la opción <b>TFA</b>.
+          </p>
+          <p>
+            <b>Nota: </b> Puede realizar este paso las veces que sea necesario.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1F_WF15HvIrxJT72jTksHFKwwbNqMs9rd"
+          />
+          <p>
+            Una vez entre a la pestaña <b>TFA</b> se mostrará un código QR.
+            Usted debe descargar una app para escanear el codigo. Se recomienda
+            <b>Google Authenticator</b>. En mi caso no me aparece el QR porque
+            ya lo escaneé. Si deseo generar nuevamente un QR debo apretar en
+            <b>Randomize</b>. Luego aplico los cambios.
+          </p>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1qnvE9NITy5AqBHLEM7XhwOA8a2h05aG6"
+          />
+          <h6>Una vez descargada la app, escaneé el QR.</h6>
+        </div>
+        <hr />
+        <div>
+          <h5>Paso 3: Verificar código de verificación en la APP.</h5>
+          <p>
+            Una vez escaneado el código QR, en la APP le aparecerá un código. En
+            mi caso use <b>Google Authenticator</b> (Ver "<b>Imagen de la app</b
+            >"). Debe ingresar dicho código en la ventana <b>Proxmox</b> cada
+            vez que inicie sesión en la plataforma (Ver "<b>Imagen de Proxmox</b
+            >"). De esta forma activo el <b>TFA</b>.
+          </p>
+          <h5>Imagen de la app:</h5>
+          <div class="p-0 m-0 d-flex justify-content-center">
+            <img
+              class="img-fluid"
+              src="https://drive.google.com/uc?export=view&id=1VmsG9v2VfmRF5gRR0LLsjhT5VjNKQwOB"
+              style="height: 500px"
+            />
+          </div>
+          <h5>Imagen de Proxmox:</h5>
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1DJAf6cm0pyGsd6r1d4GzJ74WOqyE4XmH"
+          />
+        </div>
+      </div>
     </div>
     <div class="footer mt-auto w-100">
       <p>Busto, Kevin Jonás - 2023 | Virtualización</p>
