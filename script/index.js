@@ -1,10 +1,46 @@
 const divHerramientas = document.getElementById("container-herramientas");
 const divInfoPersonal = document.getElementById("info-personal-div");
+const anchorHola = document.getElementById("hola-anchor");
 
 import arrayHerramientas from "../helpers/herramientas.js";
 import estudiante from "../helpers/infoPersonal.js";
 
 const cargarInfoPersonal = () => {
+  anchorHola.innerHTML = `
+  <p>HOLA 👋🏻</p>
+        <button
+          type="button"
+          class="btn-hola-custom"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <img
+            class="img-fluid"
+            src="https://drive.google.com/uc?export=view&id=1EemG9V23wiT_tado0MqbqQ8BoUY7vKFO"
+            alt=""
+          />
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img
+                  class="img-fluid"
+                  src="https://drive.google.com/uc?export=view&id=1EemG9V23wiT_tado0MqbqQ8BoUY7vKFO"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+  `;
+
   divInfoPersonal.innerHTML = `
   <div class="d-flex flex-column info">
           <p>

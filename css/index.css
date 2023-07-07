@@ -6,6 +6,8 @@ p {
   /* font-family: "Action Man", sans-serif !important; */
 }
 
+/* CCS DEL INDEX.HTML */
+
 .body-custom {
   background-color: #1f2937;
   max-width: 900px;
@@ -49,11 +51,32 @@ p {
 }
 
 .contain-hola img {
+  object-fit: cover;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-hola-custom {
+  border-radius: 100%;
   width: 4rem;
   height: 4rem;
-  border-radius: 100%;
-  object-fit: cover;
   margin-right: 2rem;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.modal-body > img {
+  border-radius: 5px !important;
 }
 
 .info-personal,
@@ -302,4 +325,44 @@ p {
     right: 0.9rem;
     top: 38%;
   }
+}
+
+/* CSS DEL PROFILE.HTML */
+
+.contain-profile {
+  margin-top: 3rem;
+}
+
+.contain-profile img {
+  max-width: 12rem;
+  max-height: 12rem;
+  width: 30vw;
+  height: 30vw;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.contain-profile p {
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #f2f2f2;
+  text-transform: uppercase;
+}
+
+.contain-profile button {
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #e7562e;
+  border: 0;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.contain-profile button:hover {
+  color: #e7762e;
+  text-decoration: underline;
+}
+
+.contain-profile h6 {
+  color: #f2f2f2;
 }

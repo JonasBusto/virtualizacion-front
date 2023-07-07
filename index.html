@@ -13,23 +13,12 @@
     <title>Blog Personal - Virtualización 2023</title>
   </head>
   <body class="body-custom">
-    <div class="div-nav">
-      <a href="#temas-anchor">Temas</a>
-      <a href="#hola-anchor">Sobre mi</a>
-      <a href="#tpfinal-anchor">TP final</a>
-    </div>
+    <div class="div-nav" id="navbar-contain"></div>
     <div class="d-flex flex-column contain-main mt-5">
       <div
         id="hola-anchor"
         class="d-flex p-title contain-hola align-items-center justify-content-end"
-      >
-        <p>HOLA 👋🏻</p>
-        <img
-          class="img-fluid"
-          src="https://drive.google.com/uc?export=view&id=1EemG9V23wiT_tado0MqbqQ8BoUY7vKFO"
-          alt=""
-        />
-      </div>
+      ></div>
       <div class="info-personal" id="info-personal-div"></div>
       <div class="temas mt-5" id="temas-anchor">
         <p>¿Como se creo el Blog?</p>
@@ -60,10 +49,7 @@
               de instalación de dichos componentes:
             </p>
             <div class="d-flex flex-column my-4 container-items-timeline">
-              <a
-                href="/pages/factorAutenticacion.html"
-                class="d-flex align-items-center item-timeline"
-              >
+              <a href="/" class="d-flex align-items-center item-timeline">
                 <div class="timeline-primary">
                   <div></div>
                 </div>
@@ -75,7 +61,7 @@
                 </div>
               </a>
               <a
-                href="/pages/contenedores.html"
+                href="/"
                 class="d-flex align-items-center justify-content-xl-end item-timeline"
               >
                 <div class="timeline-primary">
@@ -88,10 +74,7 @@
                   <p>Contenedores (CT)</p>
                 </div>
               </a>
-              <a
-                href="/pages/instalacionHerramientas.html"
-                class="d-flex align-items-center item-timeline"
-              >
+              <a href="/" class="d-flex align-items-center item-timeline">
                 <div class="timeline-primary">
                   <div></div>
                 </div>
@@ -103,7 +86,7 @@
                 </div>
               </a>
               <a
-                href="/pages/backFront.html"
+                href="/"
                 class="d-flex align-items-center justify-content-xl-end item-timeline"
               >
                 <div class="timeline-primary">
@@ -132,7 +115,7 @@
           </div>
           <div class="mt-4">
             <embed
-              src="/files/TP1 - BUSTO KEVIN JONÁS.pdf"
+              src="https://drive.google.com/file/d/1MPbZxkoG7aPbZyUqdCV8C_W_mLp1DnXI/preview"
               type="application/pdf"
               width="100%"
               height="600px"
@@ -156,4 +139,5 @@
     crossorigin="anonymous"
   ></script>
   <script type="module" src="./script/index.js"></script>
+  <script type="module" src="./script/user.js"></script>
 </html>
