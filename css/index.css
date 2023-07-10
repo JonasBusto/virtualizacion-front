@@ -82,7 +82,8 @@ p {
 .info-personal,
 .temas,
 .tp-container,
-.comentarios-container {
+.comentarios-container,
+.container-login {
   margin: 2rem;
   border-bottom: 4px solid #f9fafb;
 }
@@ -441,4 +442,35 @@ p {
 
 .contain-profile h6 {
   color: #f2f2f2;
+}
+
+/* CCS DEL LOGIN.HTML  */
+
+#btn-login-google {
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #f9fafb;
+  font-size: 1.5rem;
+  border: 3px solid #e7562e;
+  font-weight: 700;
+  padding: 0.7rem;
+  transition: 0.8s ease-in-out;
+}
+
+#btn-login-google > img {
+  width: 2.5rem;
+}
+
+#btn-login-google:hover {
+  filter: invert(0.15);
+}
+
+.container-login > p {
+  color: #f9fafb;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.container-login {
+  border-bottom: 0;
 }
