@@ -81,7 +81,8 @@ p {
 
 .info-personal,
 .temas,
-.tp-container {
+.tp-container,
+.comentarios-container {
   margin: 2rem;
   border-bottom: 4px solid #f9fafb;
 }
@@ -216,21 +217,96 @@ p {
   text-decoration: none;
 }
 
-.tp-container {
-  border: 0;
-}
-
-.tp-container > p {
+.tp-container > p,
+.comentarios-container > p {
   font-weight: bold;
   font-size: 2.5rem;
   text-transform: uppercase;
   text-align: end;
 }
 
-.container-tp-info > p {
+.container-tp-info > p,
+.comentarios-realizados-p {
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 2rem;
+}
+
+.container-img-comentario {
+  width: 4rem;
+  height: 4rem;
+}
+
+.container-img-comentario > img {
+  object-fit: cover;
+  transition: 0.5s ease-in-out;
+  height: 100%;
+}
+
+.contain-info-comentario {
+  padding-left: 1rem;
+  width: 90%;
+}
+
+.comentarios-realizados-p {
+}
+
+.border-comentarios {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.3px solid #666666;
+}
+
+.nombre-comentario {
+  font-weight: 700;
+  text-decoration: underline;
+  width: max-content;
+  color: #f9fafb;
+  transition: 0.5s ease-in-out;
+}
+
+.nombre-comentario:hover {
+  color: #dbdada;
+}
+
+.info-extra-comentario {
+  color: #a3a3a3 !important;
+  text-decoration: none;
+  line-height: 0.9rem;
+  font-size: 0.7rem;
+}
+
+.alerta-comentario-sesion {
+  color: #e7562e !important;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.comentario-realizado {
+  margin-top: 0.7rem !important;
+  font-weight: 100;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-comentar > button {
+  transition: 0.5s ease-in-out;
+  background-color: transparent;
+  border: 1px solid #e7562e;
+  color: #e7562e;
+  font-weight: 700;
+}
+.btn-comentar > button:hover {
+  border: 1px solid #e7762e;
+  color: #e7762e;
+}
+
+.btn-disabled,
+.btn-disabled:hover {
+  pointer-events: none;
+  color: #586474 !important;
+  border: 1px solid #586474 !important;
 }
 
 .footer {

@@ -1,6 +1,18 @@
+import { auth, db } from "./firebase.js";
+import {
+  getDoc,
+  setDoc,
+  doc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+
 const divHerramientas = document.getElementById("container-herramientas");
 const divInfoPersonal = document.getElementById("info-personal-div");
 const anchorHola = document.getElementById("hola-anchor");
+const seccionComentarios = document.getElementById("comentarios-seccion");
 
 import arrayHerramientas from "../helpers/herramientas.js";
 import estudiante from "../helpers/infoPersonal.js";
@@ -111,5 +123,40 @@ const cargarHerramientas = () => {
   );
 };
 
+const cargarComentarios = async () => {
+  const q = query(collection(db, "comentarios"));
+  const querySnapshot = await getDocs(q);
+
+  if (querySnapshot.docs.length === 0) {
+    seccionComentarios.innerHTML = `
+    <p>No hay comentarios</p>
+    `;
+  } else {
+    querySnapshot.forEach((doc) => {
+      seccionComentarios.innerHTML += `
+  <div class="d-flex border-comentarios">
+              <div class="d-flex container-img-comentario">
+                <img
+                  class="img-fluid"
+                  src="${doc.data().img_comentario}"
+                  alt=""
+                />
+              </div>
+              <div class="d-flex flex-column contain-info-comentario">
+                <a href=${
+                  "mailto:" + doc.data().email
+                } class="nombre-comentario">${doc.data().nombre}</a>
+                <p class="info-extra-comentario">${doc.data().fecha}</p>
+                <p class="comentario-realizado">
+                ${doc.data().texto_comentado}
+                </p>
+              </div>
+            </div>
+  `;
+    });
+  }
+};
+
 cargarInfoPersonal();
 cargarHerramientas();
+cargarComentarios();

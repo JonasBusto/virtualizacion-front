@@ -51,7 +51,7 @@ const arrayHerramientas = [
     nombre: "MongoDB",
     info_extra: "v6.3.2",
     img_logo:
-      "https://www.pngitem.com/pimgs/m/385-3850320_png-transparent-mongodb-icon-mongodb-logo-png-download.png",
+      "https://www.nurulfikri.com/wp-content/uploads/2020/02/MongoDB-mdb.png",
     descripcion:
       "MongoDB es una base de datos NoSQL orientada a documentos. En lugar de utilizar tablas y filas como en las bases de datos relacionales, MongoDB almacena los datos en documentos BSON (Binary JSON) flexibles y autocontenidos. Esto permite una estructura de datos más flexible y escalable, ya que no se requiere un esquema fijo. MongoDB es conocida por su capacidad de manejar grandes volúmenes de datos y su capacidad de escalar horizontalmente en clústeres distribuidos. Es ampliamente utilizado en aplicaciones modernas, como aplicaciones web, aplicaciones móviles y proyectos de big data, que requieren un almacenamiento de datos ágil y escalable.",
     url: null,
