@@ -57,6 +57,86 @@ p {
   height: 100%;
 }
 
+.modal-content {
+  background-color: #1f2937;
+}
+
+.modal-container > button {
+  color: #e7562e;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.modal-container > button:hover {
+  color: #e7762e;
+}
+
+.btn-container-modal > button {
+  color: #e7562e;
+  font-weight: 700;
+  margin: 1rem;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: 0;
+}
+
+.btn-container-modal > button:hover {
+  color: #e7762e;
+}
+
+.modal-div-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-div-input > p {
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+.container-form-presentacion {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.container-form-presentacion p {
+  color: #e7562e;
+}
+
+.container-form-presentacion textarea {
+  height: 6rem;
+}
+
+.container-form-presentacion img {
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}
+
+.modal-div-input > textarea {
+  height: 6rem;
+  width: 90%;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.modal-div-input > input {
+  width: 90%;
+}
+
+.p-borrar-sobre-mi {
+  font-size: 0.8rem !important;
+  font-weight: 100 !important;
+  text-align: start;
+  width: 90%;
+}
+
 .btn-hola-custom {
   border-radius: 100%;
   width: 4rem;
@@ -112,7 +192,7 @@ p {
 .contacto-email p {
   font-size: 1.3rem;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.2rem;
 }
 
 .contacto-email p > a {
