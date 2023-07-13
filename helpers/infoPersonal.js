@@ -17,6 +17,8 @@ const estudiante = {
     "MySQL",
     "Google Firebase",
   ],
+  presentacion:
+    "Me llamo Jonás. Soy estudiante de Ingenieria en Sistemas en la UTN - FRT. Actualmente estoy cursando quinto año de la carrera. Me gusta la programación y las matematicas.",
   emails: {
     personal: "jonasrex00@gmail.com",
     institucional: "Kevin.Busto@alu.frt.utn.edu.ar",

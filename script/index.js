@@ -55,14 +55,30 @@ const cargarInfoPersonal = () => {
 
   divInfoPersonal.innerHTML = `
   <div class="d-flex flex-column info">
-          <p>
-            Me llamo <b>${estudiante.nombre_corto}</b>. Soy estudiante de
-            <b>${estudiante.universidad.carrera_na}</b> en la <b>${
-    estudiante.universidad.u_na
-  }</b>.
-          </p>
+        <div>
+          <button data-bs-toggle="modal" data-bs-target="#editarPresentacion">
+            Editar
+          </button>
+          <div class="modal fade" id="editarPresentacion" tabindex="-1" aria-labelledby="editarPresentacionLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              
+              <div class="modal-body">
+                <input type="text" name="" id="input-presentacion-editar" value=${
+                  estudiante.presentacion
+                }>
+                <div>
+                  <button data-bs-dismiss="modal">Cancelar</button>
+                  <button id="btn-editar-presentacion">Guardar</button>
+                </div>
+              </div>  
+            </div>  
+          </div>
+        </div>
+
+        <div> 
           <p class="mt-2">
-            ${estudiante.descripcion_personal}
+            ${estudiante.presentacion}
           </p>
         </div>
         <div class="d-flex mt-4">
@@ -99,6 +115,16 @@ const cargarInfoPersonal = () => {
           </p>
         </div>
   `;
+
+  const presentacionEditada = document.getElementById(
+    "input-presentacion-editar"
+  );
+
+  document
+    .getElementById("btn-editar-presentacion")
+    .addEventListener("click", () => {
+      console.log(presentacionEditada.value);
+    });
 };
 
 const cargarHerramientas = () => {
