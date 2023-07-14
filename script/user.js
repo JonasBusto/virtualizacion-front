@@ -1,14 +1,7 @@
 import { auth, db } from "./firebase.js";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-  FacebookAuthProvider,
-  updateProfile,
-  sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 import {
   getDoc,
