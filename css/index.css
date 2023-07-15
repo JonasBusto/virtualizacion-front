@@ -111,6 +111,16 @@ p {
   height: 6rem;
 }
 
+i {
+  color: #e7562e;
+  margin: 0 0.4rem;
+  transition: 0.6s ease-in-out;
+}
+
+i:hover {
+  color: #e7762e;
+}
+
 .container-form-presentacion img {
   height: 10rem;
   width: 10rem;
@@ -211,6 +221,10 @@ p {
   text-align: end;
 }
 
+.anchor-herramienta-url {
+  text-decoration: none;
+}
+
 .container-info-blog {
   margin-top: 2rem;
 }
@@ -229,7 +243,7 @@ p {
 }
 
 .container-item-blog:hover {
-  background-color: #586474;
+  background-color: #2a3444;
 }
 
 .container-item-blog img {

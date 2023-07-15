@@ -23,12 +23,11 @@ import estudiante from "../helpers/infoPersonal.js";
 onAuthStateChanged(auth, async (currentUser) => {
   if (currentUser) {
     usuarioFirestore = await getDoc(doc(db, "users", currentUser?.uid));
-    getMySQL();
   }
+  getMySQL();
 });
 
 const getMySQL = () => {
-  console.log(usuarioFirestore.data().rol);
   fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
     .then((response) => {
       return response.json();
@@ -137,6 +136,68 @@ const eliminarAlgoSobreMi = (id) => {
   });
 };
 
+const agregarHerramienta = (herramienta) => {
+  fetch(
+    "https://virtualizacion-back-production.up.railway.app/agregarHerramienta",
+    {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        nombre: herramienta.nombre,
+        info_extra: herramienta.info_extra,
+        img_logo: herramienta.img_logo,
+        descripcion: herramienta.descripcion,
+        url: herramienta.url,
+      }),
+    }
+  ).then(() => {
+    alert("Herramienta agregada");
+    window.location.reload();
+  });
+};
+
+const modificarHerramienta = (herramienta) => {
+  fetch(
+    `https://virtualizacion-back-production.up.railway.app/modificarHerramienta/${herramienta.id}`,
+    {
+      method: "PUT",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        nombre: herramienta.nombre,
+        info_extra: herramienta.info_extra,
+        img_logo: herramienta.img_logo,
+        descripcion: herramienta.descripcion,
+        url: herramienta.url,
+      }),
+    }
+  ).then(() => {
+    alert("Herramienta agregada");
+    window.location.reload();
+  });
+};
+
+const eliminarHerramienta = (id) => {
+  fetch(
+    `https://virtualizacion-back-production.up.railway.app/eliminarHerramienta/${id}`,
+    {
+      method: "DELETE",
+    }
+  ).then(() => {
+    alert("Herramienta eliminada");
+    window.location.reload();
+  });
+};
+
 const cargarInfoPersonal = () => {
   anchorHola.innerHTML = `
   <p>HOLA 👋🏻</p>
@@ -191,15 +252,15 @@ const cargarInfoPersonal = () => {
                     <p>Modificar presentación</p>
                     <div class="container-form-presentacion d-flex flex-column">
                     <p>Email:</p>
-                    <input type="text" id="input-email-modificar" placeholder="Nueva información" value=${
+                    <input type="text" id="input-email-modificar" placeholder="Nueva información" value="${
                       estudianteMySQL.email
-                    } />
+                    }" />
                   </div>
                   <div class="container-form-presentacion d-flex flex-column">
                     <p>Presentación:</p>
-                    <textarea name="" id="textarea-presentacion-modificar" cols="30" rows="10">${
+                    <textarea name="" id="textarea-presentacion-modificar" cols="30" rows="10">"${
                       estudianteMySQL.presentacion
-                    }</textarea>
+                    }"</textarea>
                   </div>
                   <div class="container-form-presentacion d-flex flex-column">
                     <p>Url actual Imagen:</p>
@@ -288,7 +349,7 @@ const cargarInfoPersonal = () => {
 
     li.innerHTML = `
     
-    ${arraySobreMiMySQL[i].descripcion}
+    ✅ ${arraySobreMiMySQL[i].descripcion}
     <div class="modal-container" id=${
       "modal-container-secondary" + arraySobreMiMySQL[i].idSobreMi
     }>
@@ -340,7 +401,7 @@ const cargarInfoPersonal = () => {
           <p>Modificar esta información:</p>
           <textarea name="" id=${
             "textarea-sobre-mi-modificar" + arraySobreMiMySQL[i].idSobreMi
-          } cols="30" rows="10">${arraySobreMiMySQL[i].descripcion}</textarea>
+          } cols="30" rows="10">"${arraySobreMiMySQL[i].descripcion}"</textarea>
         </div>
         <div class="d-flex justify-content-between btn-container-modal">
           <button data-bs-dismiss="modal">Cancelar</button>
@@ -378,49 +439,53 @@ const cargarInfoPersonal = () => {
       )
     );
 
-    if (usuarioFirestore.data().rol === "admin") {
-      const modalContainerSecondary = document.getElementById(
-        "modal-container-secondary" + arraySobreMiMySQL[i].idSobreMi
-      );
-      const modalContainerTertiary = document.getElementById(
-        "modal-container-tertiary" + arraySobreMiMySQL[i].idSobreMi
-      );
+    if (usuarioFirestore !== null) {
+      if (usuarioFirestore.data().rol === "admin") {
+        const modalContainerSecondary = document.getElementById(
+          "modal-container-secondary" + arraySobreMiMySQL[i].idSobreMi
+        );
+        const modalContainerTertiary = document.getElementById(
+          "modal-container-tertiary" + arraySobreMiMySQL[i].idSobreMi
+        );
 
-      modalContainerSecondary.innerHTML += `
+        modalContainerSecondary.innerHTML += `
       <button data-bs-toggle="modal" data-bs-target=${
         "#borrarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
       }>
-      (Borrar)
+        <i class="fa-solid fa-trash"></i>
       </button>
       `;
 
-      modalContainerTertiary.innerHTML += `
+        modalContainerTertiary.innerHTML += `
       <button data-bs-toggle="modal" data-bs-target=${
         "#modificarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
       }>
-      (Editar)
+        <i class="fa-regular fa-pen-to-square"></i>
       </button>
       `;
+      }
     }
   }
 
-  if (usuarioFirestore.data().rol === "admin") {
-    const modalInyectar = document.getElementById("modal-inyect");
-    const modalContainerInyectar = document.getElementById(
-      "modal-container-inyectar"
-    );
+  if (usuarioFirestore !== null) {
+    if (usuarioFirestore.data().rol === "admin") {
+      const modalInyectar = document.getElementById("modal-inyect");
+      const modalContainerInyectar = document.getElementById(
+        "modal-container-inyectar"
+      );
 
-    modalInyectar.innerHTML += `
-    <button data-bs-toggle="modal" data-bs-target="#editarPresentacion">
-    Editar
-    </button>
-    `;
+      modalInyectar.innerHTML += `
+      <button data-bs-toggle="modal" data-bs-target="#editarPresentacion">
+        <i class="fa-solid fa-user-pen"></i>
+      </button>
+      `;
 
-    modalContainerInyectar.innerHTML += `
-    <button class="btn-e-sobre-mi" data-bs-toggle="modal" data-bs-target="#agregarSobreMi">
-    (Agregar)
-  </button>
-    `;
+      modalContainerInyectar.innerHTML += `
+      <button class="btn-e-sobre-mi" data-bs-toggle="modal" data-bs-target="#agregarSobreMi">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      `;
+    }
   }
 
   // VALIDAR PRESENTACIÓN
@@ -504,26 +569,410 @@ const cargarInfoPersonal = () => {
 };
 
 const cargarHerramientas = () => {
-  console.log("herramienta: ", arrayHerramientasMySQL);
-  arrayHerramientas.map(
-    (h) =>
-      (divHerramientas.innerHTML += `
-    <div class="d-flex container-item-blog">
-    <img
-        class="img-fluid"
-        src=${h.img_logo}
-        alt=""
-    />
+  divHerramientas.innerHTML = `
+  <div class="d-flex align-items-center acerca">
+  <p>Herramientas
+  </p>
+    <div class="modal-container" id="modal-container-n-h">
 
-    <div class="d-flex flex-column">
-        <p class="title-item d-flex align-items-center"><b class="me-2">${h.nombre}</b> (${h.info_extra})</p>
-        <p class="info-item">
-        ${h.descripcion}
-        </p>
-    </div>
-    </div>
-    `)
-  );
+        
+      </div> 
+  </div>
+  `;
+
+  if (usuarioFirestore !== null) {
+    if (usuarioFirestore.data().rol === "admin") {
+      const divModalContainerNH = document.getElementById(
+        "modal-container-n-h"
+      );
+
+      divModalContainerNH.innerHTML = `
+      <button data-bs-toggle="modal" data-bs-target="#nuevaHerramienta">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+
+      <div
+          class="modal fade"
+          id="nuevaHerramienta"
+          tabindex="-1"
+          aria-labelledby="nuevaHerramientaLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="modal-div-input">
+                  <p>Nueva herramienta</p>
+                  <div class="container-form-presentacion d-flex flex-column">
+                    <p>Nombre:</p>
+                    <input type="text" id="input-nombre-h" placeholder="Nombre" />
+                  </div>
+                  <div class="container-form-presentacion d-flex flex-column">
+                    <p>Información extra (Opcional):</p>
+                    <input type="text" id="input-info-extra-h" placeholder="Info extra. Ej: Versión actual, etc" />
+                  </div>
+                  <div class="container-form-presentacion d-flex flex-column">
+                    <p>Url Logo:</p>
+                    <input type="text" id="input-url-logo-h" placeholder="URL Logo" />
+                  </div>
+                  <div class="container-form-presentacion d-flex flex-column">
+                    <p>Descripción:</p>
+                    <textarea name="" id="textarea-descripcion-h" cols="30" rows="10"></textarea>
+                  </div>
+                  <div class="container-form-presentacion d-flex flex-column">
+                    <p>Url de la pagina de la herramienta (Opcional):</p>
+                    <input type="text" id="input-url-pagina-h" placeholder="URL Pagina" />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between btn-container-modal">
+                  <button data-bs-dismiss="modal">Cancelar</button>
+                  <button id="btn-agregar-herramienta">Agregar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const inputNombreHerramienta = document.getElementById("input-nombre-h");
+      const inputInfoExtraHerramienta =
+        document.getElementById("input-info-extra-h");
+      const inputUrlLogoHerramienta =
+        document.getElementById("input-url-logo-h");
+      const textareaDescripcionHerramienta = document.getElementById(
+        "textarea-descripcion-h"
+      );
+      const inputUrlPaginaHerramienta =
+        document.getElementById("input-url-pagina-h");
+      const btnAgregarHerramienta = document.getElementById(
+        "btn-agregar-herramienta"
+      );
+      btnAgregarHerramienta.classList.add("btn-disabled");
+
+      inputNombreHerramienta.addEventListener("keyup", () => {
+        if (
+          inputNombreHerramienta.value.trim() === "" ||
+          inputUrlLogoHerramienta.value.trim() === "" ||
+          textareaDescripcionHerramienta.value.trim() === ""
+        ) {
+          btnAgregarHerramienta.classList.add("btn-disabled");
+        } else {
+          btnAgregarHerramienta.classList.remove("btn-disabled");
+        }
+      });
+      inputUrlLogoHerramienta.addEventListener("keyup", () => {
+        if (
+          inputNombreHerramienta.value.trim() === "" ||
+          inputUrlLogoHerramienta.value.trim() === "" ||
+          textareaDescripcionHerramienta.value.trim() === ""
+        ) {
+          btnAgregarHerramienta.classList.add("btn-disabled");
+        } else {
+          btnAgregarHerramienta.classList.remove("btn-disabled");
+        }
+      });
+      textareaDescripcionHerramienta.addEventListener("keyup", () => {
+        if (
+          inputNombreHerramienta.value.trim() === "" ||
+          inputUrlLogoHerramienta.value.trim() === "" ||
+          textareaDescripcionHerramienta.value.trim() === ""
+        ) {
+          btnAgregarHerramienta.classList.add("btn-disabled");
+        } else {
+          btnAgregarHerramienta.classList.remove("btn-disabled");
+        }
+      });
+
+      btnAgregarHerramienta.addEventListener("click", () => {
+        let auxInfoExtra = null;
+        let auxUrlPagina = null;
+        if (inputInfoExtraHerramienta.value.trim() !== "") {
+          auxInfoExtra = inputInfoExtraHerramienta.value.trim();
+        }
+        if (inputUrlPaginaHerramienta.value.trim() !== "") {
+          auxUrlPagina = inputUrlPaginaHerramienta.value.trim();
+        }
+
+        const objetoHerramienta = {
+          nombre: inputNombreHerramienta.value.trim(),
+          info_extra: auxInfoExtra,
+          img_logo: inputUrlLogoHerramienta.value.trim(),
+          descripcion: textareaDescripcionHerramienta.value.trim(),
+          url: auxUrlPagina,
+        };
+
+        agregarHerramienta(objetoHerramienta);
+      });
+    }
+  }
+
+  for (let i = 0; i < arrayHerramientasMySQL.length; i++) {
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "container-item-blog");
+
+    if (arrayHerramientasMySQL[i].url === null) {
+      div.innerHTML = `
+      
+      <img
+      class="img-fluid"
+      src=${arrayHerramientasMySQL[i].img_logo}
+      alt=""
+      />
+      
+      <div class="d-flex flex-column" >
+      <p class="title-item d-flex align-items-center"><b class="me-2">${
+        arrayHerramientasMySQL[i].nombre
+      }</b> (${arrayHerramientasMySQL[i].info_extra})</p>
+      <p class="info-item">
+      ${arrayHerramientasMySQL[i].descripcion}
+      </p>
+      <div class="d-flex" id=${"container-h" + arrayHerramientasMySQL[i].id}>
+      
+      </div>
+      </div>
+      `;
+    } else {
+      div.innerHTML = `
+      
+      <img
+      class="img-fluid"
+      src=${arrayHerramientasMySQL[i].img_logo}
+      alt=""
+      />
+      
+      <div class="d-flex flex-column">
+      <a href="${arrayHerramientasMySQL[i].url}" class="anchor-herramienta-url">
+      <p class="title-item d-flex align-items-center"><b class="me-2">${
+        arrayHerramientasMySQL[i].nombre
+      }</b> (${arrayHerramientasMySQL[i].info_extra})</p>
+      </a>
+      <p class="info-item">
+      ${arrayHerramientasMySQL[i].descripcion}
+      </p>
+      <div class="d-flex" id=${"container-h" + arrayHerramientasMySQL[i].id}>
+      
+      </div>
+      </div>
+      `;
+    }
+
+    divHerramientas.appendChild(div);
+
+    if (usuarioFirestore !== null) {
+      if (usuarioFirestore.data().rol === "admin") {
+        const containerHerramienta = document.getElementById(
+          "container-h" + arrayHerramientasMySQL[i].id
+        );
+
+        containerHerramienta.innerHTML = `
+        <div class="modal-container">
+          <button data-bs-toggle="modal" data-bs-target=${
+            "#editarHerramienta" + arrayHerramientasMySQL[i].id
+          }>
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+    
+          <div
+            class="modal fade"
+            id=${"editarHerramienta" + arrayHerramientasMySQL[i].id}
+            tabindex="-1"
+            aria-labelledby=${
+              "editarHerramientaLabel" + arrayHerramientasMySQL[i].id
+            }
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                <div class="modal-div-input">
+                <p>Modificar herramienta</p>
+                <div class="container-form-presentacion d-flex flex-column">
+                  <p>Nombre:</p>
+                  <input type="text" id=${
+                    "input-nombre-h-m" + arrayHerramientasMySQL[i].id
+                  } 
+                  value="${arrayHerramientasMySQL[i].nombre}"
+                  placeholder="Nombre" />
+                </div>
+                <div class="container-form-presentacion d-flex flex-column">
+                  <p>Información extra (Opcional):</p>
+                  <input type="text" id=${
+                    "input-info-extra-h-m" + arrayHerramientasMySQL[i].id
+                  } value="${
+          arrayHerramientasMySQL[i].info_extra
+        }" placeholder="Info extra. Ej: Versión actual, etc" />
+                </div>
+                <div class="container-form-presentacion d-flex flex-column">
+                  <p>Url Logo:</p>
+                  <img
+                    class="img-fluid mx-auto my-2"
+                    src="${arrayHerramientasMySQL[i].img_logo}"
+                    alt=""
+                  />
+                  <input type="text" id=${
+                    "input-url-logo-h-m" + arrayHerramientasMySQL[i].id
+                  } value="${
+          arrayHerramientasMySQL[i].img_logo
+        }" placeholder="URL Logo" />
+                </div>
+                <div class="container-form-presentacion d-flex flex-column">
+                  <p>Descripción:</p>
+                  <textarea name="" id=${
+                    "textarea-descripcion-h-m" + arrayHerramientasMySQL[i].id
+                  } cols="30" rows="10">${
+          arrayHerramientasMySQL[i].descripcion
+        }</textarea>
+                </div>
+                <div class="container-form-presentacion d-flex flex-column">
+                  <p>Url de la pagina de la herramienta (Opcional):</p>
+                  <input type="text" id=${
+                    "input-url-pagina-h-m" + arrayHerramientasMySQL[i].id
+                  } value="${
+          arrayHerramientasMySQL[i].url === null
+            ? ""
+            : arrayHerramientasMySQL[i].url
+        }" placeholder="URL Pagina" />
+                </div>
+              </div>
+                  <div class="d-flex justify-content-between btn-container-modal">
+                    <button data-bs-dismiss="modal">Cancelar</button>
+                    <button id="${
+                      "btn-modificar-h" + arrayHerramientasMySQL[i].id
+                    }">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+       
+        <div class="modal-container">
+          <button data-bs-toggle="modal" data-bs-target=${
+            "#borrarHerramienta" + arrayHerramientasMySQL[i].id
+          }>
+            <i class="fa-solid fa-trash"></i>
+          </button>
+    
+          <div
+            class="modal fade"
+            id=${"borrarHerramienta" + arrayHerramientasMySQL[i].id}
+            tabindex="-1"
+            aria-labelledby=${
+              "borrarHerramientaLabel" + arrayHerramientasMySQL[i].id
+            }
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                <div class="modal-div-input">
+                  <p>Borrar herramienta: '${
+                    arrayHerramientasMySQL[i].nombre
+                  }'</p>
+                  <img
+                    class="img-fluid mx-auto my-2"
+                    src="${arrayHerramientasMySQL[i].img_logo}"
+                    alt=""
+                  />
+                  <div class="d-flex justify-content-between btn-container-modal">
+                    <button data-bs-dismiss="modal">Cancelar</button>
+                    <button id=${
+                      "btn-borrar-h" + arrayHerramientasMySQL[i].id
+                    }>Borrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+
+        const inputModNombreH = document.getElementById(
+          "input-nombre-h-m" + arrayHerramientasMySQL[i].id
+        );
+        const inputModInfoExtraHerramienta = document.getElementById(
+          "input-info-extra-h-m" + arrayHerramientasMySQL[i].id
+        );
+        const inputModUrlLogoHerramienta = document.getElementById(
+          "input-url-logo-h-m" + arrayHerramientasMySQL[i].id
+        );
+        const textareaModDescripcionHerramienta = document.getElementById(
+          "textarea-descripcion-h-m" + arrayHerramientasMySQL[i].id
+        );
+        const inputModUrlPaginaHerramienta = document.getElementById(
+          "input-url-pagina-h-m" + arrayHerramientasMySQL[i].id
+        );
+
+        const btnModificarHerramienta = document.getElementById(
+          "btn-modificar-h" + arrayHerramientasMySQL[i].id
+        );
+        const btnEliminarHerramienta = document.getElementById(
+          "btn-borrar-h" + arrayHerramientasMySQL[i].id
+        );
+
+        btnEliminarHerramienta.addEventListener("click", () => {
+          eliminarHerramienta(arrayHerramientasMySQL[i].id);
+        });
+
+        inputModNombreH.addEventListener("keyup", () => {
+          if (
+            inputModNombreH.value.trim() === "" ||
+            inputModUrlLogoHerramienta.value.trim() === "" ||
+            textareaModDescripcionHerramienta.value.trim() === ""
+          ) {
+            btnModificarHerramienta.classList.add("btn-disabled");
+          } else {
+            btnModificarHerramienta.classList.remove("btn-disabled");
+          }
+        });
+        inputModUrlLogoHerramienta.addEventListener("keyup", () => {
+          if (
+            inputModNombreH.value.trim() === "" ||
+            inputModUrlLogoHerramienta.value.trim() === "" ||
+            textareaModDescripcionHerramienta.value.trim() === ""
+          ) {
+            btnModificarHerramienta.classList.add("btn-disabled");
+          } else {
+            btnModificarHerramienta.classList.remove("btn-disabled");
+          }
+        });
+        textareaModDescripcionHerramienta.addEventListener("keyup", () => {
+          if (
+            inputModNombreH.value.trim() === "" ||
+            inputModUrlLogoHerramienta.value.trim() === "" ||
+            textareaModDescripcionHerramienta.value.trim() === ""
+          ) {
+            btnModificarHerramienta.classList.add("btn-disabled");
+          } else {
+            btnModificarHerramienta.classList.remove("btn-disabled");
+          }
+        });
+
+        btnModificarHerramienta.addEventListener("click", () => {
+          let auxInfoExtra = null;
+          let auxUrlPagina = null;
+          if (inputModInfoExtraHerramienta.value.trim() !== "") {
+            auxInfoExtra = inputModInfoExtraHerramienta.value.trim();
+          }
+          if (inputModUrlPaginaHerramienta.value.trim() !== "") {
+            auxUrlPagina = inputModUrlPaginaHerramienta.value.trim();
+          }
+
+          const objetoHerramienta = {
+            id: arrayHerramientasMySQL[i].id,
+            nombre: inputModNombreH.value.trim(),
+            info_extra: auxInfoExtra,
+            img_logo: inputModUrlLogoHerramienta.value.trim(),
+            descripcion: textareaModDescripcionHerramienta.value.trim(),
+            url: auxUrlPagina,
+          };
+
+          modificarHerramienta(objetoHerramienta);
+        });
+      }
+    }
+  }
 };
 
 const cargarComentarios = async () => {
