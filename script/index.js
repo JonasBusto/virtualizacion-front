@@ -12,13 +12,22 @@ const divHerramientas = document.getElementById("container-herramientas");
 const divInfoPersonal = document.getElementById("info-personal-div");
 const anchorHola = document.getElementById("hola-anchor");
 const seccionComentarios = document.getElementById("comentarios-seccion");
+const modalTFAinyectar = document.getElementById("modalTFAinyectar");
+const modalCreacionCTinyectar = document.getElementById(
+  "modalCreacionCTinyectar"
+);
+const modalLAMJinyectar = document.getElementById("modalLAMJinyectar");
+const modalBackFrontInyectar = document.getElementById(
+  "modalFrontBackinyectar"
+);
 let arrayHerramientasMySQL = [];
 let estudianteMySQL = {};
 let arraySobreMiMySQL = [];
 let usuarioFirestore = null;
 
-import arrayHerramientas from "../helpers/herramientas.js";
-import estudiante from "../helpers/infoPersonal.js";
+import arrayCreacionCT from "../helpers/creacionCT.js";
+import arrayLAMJ from "../helpers/LAMJ.js";
+import arrayActivarTFA from "../helpers/TFA.js";
 
 onAuthStateChanged(auth, async (currentUser) => {
   if (currentUser) {
@@ -1011,4 +1020,192 @@ const cargarComentarios = async () => {
   }
 };
 
+const cargarInfoBlog = () => {
+  console.log(arrayCreacionCT);
+
+  modalTFAinyectar.innerHTML = `
+  <button data-bs-toggle="modal" data-bs-target="#modalTFA">
+                    Factor de autenticación
+                  </button>
+                  <div
+                    class="modal fade"
+                    id="modalTFA"
+                    tabindex="-1"
+                    aria-labelledby="modalTFALabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <div class="modal-div-input" id="m-tfa-i">
+                            <p>Factor de autenticación</p>
+                            
+                          </div>
+                          <div
+                            class="d-flex justify-content-between btn-container-modal"
+                          >
+                            <button data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      </div>
+                      `;
+  const mTFAi = document.getElementById("m-tfa-i");
+
+  for (let i = 0; i < arrayActivarTFA.length; i++) {
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "flex-column", "item-modal-index");
+    div.innerHTML = `
+    <p>Paso ${arrayActivarTFA[i].numPaso}: ${arrayActivarTFA[i].descripcion}</p>
+                              <img
+                                class="img-fluid"
+                                src="${arrayActivarTFA[i].urlImagen}"
+                                alt=""
+                              />
+    `;
+    mTFAi.appendChild(div);
+  }
+
+  modalCreacionCTinyectar.innerHTML = `
+  <button
+  data-bs-toggle="modal"
+  data-bs-target="#modalCreacionCT"
+>
+  Contenedores (CT)
+</button>
+<div
+  class="modal fade"
+  id="modalCreacionCT"
+  tabindex="-1"
+  aria-labelledby="modalCreacionCTLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-div-input" id="m-ct-i">
+          <p>Creación de contenedores (CT)</p>
+        </div>
+        <div
+          class="d-flex justify-content-between btn-container-modal"
+        >
+          <button data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  `;
+
+  const mCTi = document.getElementById("m-ct-i");
+  for (let i = 0; i < arrayCreacionCT.length; i++) {
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "flex-column", "item-modal-index");
+    div.innerHTML = `
+    <p>Paso ${arrayCreacionCT[i].numPaso}: ${arrayCreacionCT[i].descripcion}</p>
+                              <img
+                                class="img-fluid"
+                                src="${arrayCreacionCT[i].urlImagen}"
+                                alt=""
+                              />
+    `;
+    mCTi.appendChild(div);
+  }
+
+  modalLAMJinyectar.innerHTML = `
+  <button data-bs-toggle="modal" data-bs-target="#modalLAMJ">
+  Apache, MariaDB y NodeJS
+</button>
+<div
+  class="modal fade"
+  id="modalLAMJ"
+  tabindex="-1"
+  aria-labelledby="modalLAMJLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-div-input" id="m-lamj-i">
+          <p>Linux, Apache, MariaDB, JavaScript</p>
+        </div>
+        <div
+          class="d-flex justify-content-between btn-container-modal"
+        >
+          <button data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  `;
+
+  const mLAMJi = document.getElementById("m-lamj-i");
+
+  for (let i = 0; i < arrayLAMJ.length; i++) {
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "flex-column", "item-modal-index");
+    div.innerHTML = `
+    <p>Paso ${arrayLAMJ[i].numPaso}: ${arrayLAMJ[i].descripcion}</p>
+                              <img
+                                class="img-fluid"
+                                src="${arrayLAMJ[i].urlImagen}"
+                                alt=""
+                              />
+    `;
+    mLAMJi.appendChild(div);
+  }
+
+  modalBackFrontInyectar.innerHTML = `
+  <button
+  data-bs-toggle="modal"
+  data-bs-target="#modalFrontBack"
+>
+  Frontend y Backend
+</button>
+<div
+  class="modal fade"
+  id="modalFrontBack"
+  tabindex="-1"
+  aria-labelledby="modalFrontBackLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-div-input">
+          <p>Frontend y Backend</p>
+          <div class="d-flex flex-column item-modal-index">
+            <p>Para el backend utilice MySQL, y se definio previamente un diagrama relacional de la base de datos que usaria. Dicho diagrama es el siguiente:</p>
+            <img
+              class="img-fluid"
+              src="http://drive.google.com/uc?export=view&id=1Vn2Vszj_abCEVtPPnXqAwJNs8uhdZOyi"
+              alt=""
+            />
+          </div>
+          <div class="d-flex flex-column item-modal-index">
+            <p>Las herramientas que utilice para programar el backend fueron las siguientes: NodeJS, express, MariaDB (MySQL)</p>
+          </div>
+          <div class="d-flex flex-column item-modal-index">
+            <p>El repositorio del backend es el siguiente:</p>
+            <a href="https://github.com/JonasBusto/virtualizacion-back" target="_blank">Repositorio Backend</a>
+          </div>
+          <div class="d-flex flex-column item-modal-index">
+            <p>En tanto al frontend, utilice: JavaScript, HTML, CSS y Google Firebase</p>
+          </div>
+        </div>
+        <div
+          class="d-flex justify-content-between btn-container-modal"
+        >
+          <button data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  `;
+};
+
+cargarInfoBlog();
 cargarComentarios();

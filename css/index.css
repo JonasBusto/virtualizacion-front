@@ -74,16 +74,16 @@ p {
 }
 
 .btn-container-modal > button {
-  color: #e7562e;
-  font-weight: 700;
-  margin: 1rem;
-  font-size: 1.2rem;
-  background-color: transparent;
-  border: 0;
+  color: #e7562e !important;
+  font-weight: 700 !important;
+  margin: 1rem !important;
+  font-size: 1.2rem !important;
+  background-color: transparent !important;
+  border: 0 !important;
 }
 
 .btn-container-modal > button:hover {
-  color: #e7762e;
+  color: #e7762e !important;
 }
 
 .modal-div-input {
@@ -426,6 +426,15 @@ i:hover {
 .footer > p:hover {
   color: #e7762e;
   cursor: pointer;
+}
+
+.item-modal-index {
+  width: 95%;
+  margin-top: 1rem;
+}
+
+.item-modal-index > p {
+  font-size: 0.8rem;
 }
 
 @media (min-width: 900px) {
