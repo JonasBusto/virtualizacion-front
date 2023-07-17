@@ -741,7 +741,9 @@ const cargarHerramientas = () => {
       />
       
       <div class="d-flex flex-column">
-      <a href="${arrayHerramientasMySQL[i].url}" class="anchor-herramienta-url">
+      <a href="${
+        arrayHerramientasMySQL[i].url
+      }" target="_blank" class="anchor-herramienta-url">
       <p class="title-item d-flex align-items-center"><b class="me-2">${
         arrayHerramientasMySQL[i].nombre
       }</b> (${arrayHerramientasMySQL[i].info_extra})</p>
