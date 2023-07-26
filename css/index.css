@@ -350,9 +350,6 @@ i:hover {
   width: 90%;
 }
 
-.comentarios-realizados-p {
-}
-
 .border-comentarios {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
@@ -435,6 +432,32 @@ i:hover {
 
 .item-modal-index > p {
   font-size: 0.8rem;
+}
+
+@media (max-width: 670px) {
+  .footer > p {
+    font-size: 3.6vw;
+  }
+}
+
+@media (max-width: 330px) {
+  .contain-hola > p {
+    font-size: 13vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer > p {
+    font-size: 3.6vw;
+  }
+
+  .temas > p,
+  .comentarios-container > p {
+    font-size: 8vw;
+  }
+  .contacto-email p > a {
+    font-size: 4.5vw;
+  }
 }
 
 @media (min-width: 900px) {

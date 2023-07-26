@@ -249,6 +249,7 @@ const cargarInfoPersonal = () => {
         <div class="modal-container" id="modal-inyect">  
           <div
             class="modal fade"
+            data-bs-backdrop="static"
             id="editarPresentacion"
             tabindex="-1"
             aria-labelledby="editarPresentacionLabel"
@@ -267,9 +268,9 @@ const cargarInfoPersonal = () => {
                   </div>
                   <div class="container-form-presentacion d-flex flex-column">
                     <p>Presentación:</p>
-                    <textarea name="" id="textarea-presentacion-modificar" cols="30" rows="10">"${
+                    <textarea name="" id="textarea-presentacion-modificar" cols="30" rows="10">${
                       estudianteMySQL.presentacion
-                    }"</textarea>
+                    }</textarea>
                   </div>
                   <div class="container-form-presentacion d-flex flex-column">
                     <p>Url actual Imagen:</p>
@@ -306,6 +307,7 @@ const cargarInfoPersonal = () => {
             <div class="modal-container d-flex align-items-center" id="modal-container-inyectar">
           <div
             class="modal fade"
+            data-bs-backdrop="static"
             id="agregarSobreMi"
             tabindex="-1"
             aria-labelledby="agregarSobreMiLabel"
@@ -366,6 +368,7 @@ const cargarInfoPersonal = () => {
 
     <div
     class="modal fade"
+    data-bs-backdrop="static"
     id=${"borrarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi}
     tabindex="-1"
     aria-labelledby=${"borrarInfoSobreMiLabel" + arraySobreMiMySQL[i].idSobreMi}
@@ -396,6 +399,7 @@ const cargarInfoPersonal = () => {
 
     <div
     class="modal fade"
+    data-bs-backdrop="static"
     id=${"modificarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi}
     tabindex="-1"
     aria-labelledby=${
@@ -410,7 +414,7 @@ const cargarInfoPersonal = () => {
           <p>Modificar esta información:</p>
           <textarea name="" id=${
             "textarea-sobre-mi-modificar" + arraySobreMiMySQL[i].idSobreMi
-          } cols="30" rows="10">"${arraySobreMiMySQL[i].descripcion}"</textarea>
+          } cols="30" rows="10">${arraySobreMiMySQL[i].descripcion}</textarea>
         </div>
         <div class="d-flex justify-content-between btn-container-modal">
           <button data-bs-dismiss="modal">Cancelar</button>
@@ -427,6 +431,33 @@ const cargarInfoPersonal = () => {
 
     listaSobreMi.appendChild(li);
 
+    if (usuarioFirestore !== null) {
+      if (usuarioFirestore.data().rol === "admin") {
+        const modalContainerSecondary = document.getElementById(
+          "modal-container-secondary" + arraySobreMiMySQL[i].idSobreMi
+        );
+        const modalContainerTertiary = document.getElementById(
+          "modal-container-tertiary" + arraySobreMiMySQL[i].idSobreMi
+        );
+
+        modalContainerSecondary.innerHTML += `
+      <button data-bs-toggle="modal" data-bs-target=${
+        "#borrarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
+      }>
+      <i class="fa-solid fa-trash"></i>
+      </button>
+      `;
+
+        modalContainerTertiary.innerHTML += `
+      <button data-bs-toggle="modal" data-bs-target=${
+        "#modificarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
+      }>
+      <i class="fa-regular fa-pen-to-square"></i>
+      </button>
+      `;
+      }
+    }
+
     const textareaSobreMiModificar = document.getElementById(
       "textarea-sobre-mi-modificar" + arraySobreMiMySQL[i].idSobreMi
     );
@@ -441,39 +472,12 @@ const cargarInfoPersonal = () => {
     btnEliminarAlgoSobreMi.addEventListener("click", () =>
       eliminarAlgoSobreMi(arraySobreMiMySQL[i].idSobreMi)
     );
-    btnModificarAlgoSobreMi.addEventListener("click", () =>
+    btnModificarAlgoSobreMi.addEventListener("click", () => {
       editarAlgoSobreMi(
         arraySobreMiMySQL[i].idSobreMi,
         textareaSobreMiModificar.value.trim()
-      )
-    );
-
-    if (usuarioFirestore !== null) {
-      if (usuarioFirestore.data().rol === "admin") {
-        const modalContainerSecondary = document.getElementById(
-          "modal-container-secondary" + arraySobreMiMySQL[i].idSobreMi
-        );
-        const modalContainerTertiary = document.getElementById(
-          "modal-container-tertiary" + arraySobreMiMySQL[i].idSobreMi
-        );
-
-        modalContainerSecondary.innerHTML += `
-      <button data-bs-toggle="modal" data-bs-target=${
-        "#borrarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
-      }>
-        <i class="fa-solid fa-trash"></i>
-      </button>
-      `;
-
-        modalContainerTertiary.innerHTML += `
-      <button data-bs-toggle="modal" data-bs-target=${
-        "#modificarInfoSobreMi" + arraySobreMiMySQL[i].idSobreMi
-      }>
-        <i class="fa-regular fa-pen-to-square"></i>
-      </button>
-      `;
-      }
-    }
+      );
+    });
   }
 
   if (usuarioFirestore !== null) {
@@ -551,7 +555,7 @@ const cargarInfoPersonal = () => {
       presentacion: textareaPresentacionModificar.value.trim(),
       url_img_perfil: inputURLImagenModificar.value.trim(),
     };
-
+    btnModificarPresentacion.classList.add("btn-disabled");
     modificarDatosEstudiante(objetoEstudiante);
   });
 
@@ -602,6 +606,7 @@ const cargarHerramientas = () => {
 
       <div
           class="modal fade"
+          data-bs-backdrop="static"
           id="nuevaHerramienta"
           tabindex="-1"
           aria-labelledby="nuevaHerramientaLabel"
@@ -785,6 +790,7 @@ const cargarHerramientas = () => {
     
           <div
             class="modal fade"
+            data-bs-backdrop="static"
             id=${"editarHerramienta" + arrayHerramientasMySQL[i].id}
             tabindex="-1"
             aria-labelledby=${
@@ -867,6 +873,7 @@ const cargarHerramientas = () => {
     
           <div
             class="modal fade"
+            data-bs-backdrop="static"
             id=${"borrarHerramienta" + arrayHerramientasMySQL[i].id}
             tabindex="-1"
             aria-labelledby=${
@@ -1021,8 +1028,6 @@ const cargarComentarios = async () => {
 };
 
 const cargarInfoBlog = () => {
-  console.log(arrayCreacionCT);
-
   modalTFAinyectar.innerHTML = `
   <button data-bs-toggle="modal" data-bs-target="#modalTFA">
                     Factor de autenticación
