@@ -14,7 +14,9 @@ const loginWithGoogle = async () => {
   const googleProvider = new GoogleAuthProvider();
   return signInWithPopup(auth, googleProvider)
     .then(async (currentUser) => {
-      if (currentUser.user.email === "jonasrex00@gmail.com") {
+      if (
+        currentUser.user.email.toLowerCase().trim() === "jonasrex00@gmail.com"
+      ) {
         await setDoc(doc(db, "users", currentUser.user.uid), {
           email: currentUser.user.email,
           rol: "admin",
