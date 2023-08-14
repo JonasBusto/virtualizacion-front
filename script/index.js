@@ -37,7 +37,7 @@ onAuthStateChanged(auth, async (currentUser) => {
 });
 
 const getMySQL = () => {
-  fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
+  fetch("http://192.168.77.228:3001/sobreMi")
     .then((response) => {
       return response.json();
     })
