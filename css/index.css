@@ -250,7 +250,6 @@ i:hover {
   object-fit: cover;
   width: 3.5rem;
   height: 3.5rem;
-  /* margin-right: 1rem; */
   margin: 0 0.5rem;
 }
 
@@ -268,7 +267,6 @@ i:hover {
   border: 1px solid #f2f2f2;
   margin: 1rem 0;
   margin-left: 2rem;
-  /* padding: 1.2rem; */
   border-radius: 10px;
   width: 100%;
 }
