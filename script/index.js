@@ -57,7 +57,7 @@ const getMySQL = () => {
     })
     .catch((error) => console.log("error-sobre-mi: ", error));
 
-  fetch("http://192.168.77.228:3001/herramientas")
+  fetch("https://virtualizacion-back-production.up.railway.app/herramientas")
     .then((response) => {
       return response.json();
     })
