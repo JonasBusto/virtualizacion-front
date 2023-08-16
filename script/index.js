@@ -37,16 +37,15 @@ onAuthStateChanged(auth, async (currentUser) => {
 });
 
 const getMySQL = () => {
-  fetch("http://192.168.77.228:3001/sobreMi")
-    // fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
+  fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       arraySobreMiMySQL = data;
-      fetch("http://192.168.77.228:3001/estudiante/1");
-      fetch()
-      // "https://virtualizacion-back-production.up.railway.app/estudiante/1"
+      fetch(
+        "https://virtualizacion-back-production.up.railway.app/estudiante/1"
+      )
         .then((response) => {
           return response.json();
         })
@@ -58,7 +57,7 @@ const getMySQL = () => {
     })
     .catch((error) => console.log("error-sobre-mi: ", error));
 
-  fetch("192.168.77.228:3001/herramientas")
+  fetch("https://virtualizacion-back-production.up.railway.app/herramientas")
     .then((response) => {
       return response.json();
     })
@@ -210,7 +209,7 @@ const eliminarHerramienta = (id) => {
 
 const cargarInfoPersonal = () => {
   anchorHola.innerHTML = `
- 
+  <p>HOLA 👋🏻</p>
         <button
           type="button"
           class="btn-hola-custom"
