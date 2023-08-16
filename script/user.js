@@ -19,10 +19,10 @@ onAuthStateChanged(auth, async (currentUser) => {
     usuarioFirestore = await getDoc(doc(db, "users", currentUser?.uid));
     // console.log(currentUser);
     // console.log(usuarioFirestore);
-    navbarDiv.innerHTML = `
-    <a href="/">Inicio</a>
-      <a href="/pages/profile.html">Mi perfil</a>
-    `;
+    // navbarDiv.innerHTML = `
+    // <a href="/">Inicio</a>
+    //   <a href="/pages/profile.html">Mi perfil</a>
+    // `;
 
     if (profile) {
       profile.innerHTML = `
@@ -79,10 +79,10 @@ onAuthStateChanged(auth, async (currentUser) => {
       );
     }
   } else {
-    navbarDiv.innerHTML = `
-    <a href="/">Inicio</a>
-      
-    `;
+    // navbarDiv.innerHTML = `
+    // <a href="/">Inicio</a>
+
+    // `;
 
     if (formComentarios) {
       formComentarios.innerHTML = `
