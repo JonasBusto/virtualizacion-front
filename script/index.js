@@ -37,13 +37,16 @@ onAuthStateChanged(auth, async (currentUser) => {
 });
 
 const getMySQL = () => {
-  fetch("192.168.77.228:3001/sobreMi")
+  fetch("http://192.168.77.228:3001/sobreMi")
+    // fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       arraySobreMiMySQL = data;
-      fetch("192.168.77.228:3001/estudiante/1")
+      fetch("http://192.168.77.228:3001/estudiante/1");
+      fetch()
+      // "https://virtualizacion-back-production.up.railway.app/estudiante/1"
         .then((response) => {
           return response.json();
         })
