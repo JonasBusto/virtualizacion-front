@@ -81,7 +81,6 @@ onAuthStateChanged(auth, async (currentUser) => {
   } else {
     navbarDiv.innerHTML = `
     <a href="/">Inicio</a>
-    <a href="/">Inicio 2</a>
       <a href="/pages/login.html">Autenticarse</a> 
     `;
 
