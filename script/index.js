@@ -36,6 +36,16 @@ onAuthStateChanged(auth, async (currentUser) => {
   getMySQL();
 });
 
+async function pruebaFetch() {
+  var res = await fetch("http://192.168.77.228:3001/herramientas");
+  var json = await res.json();
+  var result = { data: json };
+  console.log("resultado: ", result);
+  return result;
+}
+
+pruebaFetch();
+
 const getMySQL = () => {
   fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
     .then((response) => {
