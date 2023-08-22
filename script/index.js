@@ -36,23 +36,15 @@ onAuthStateChanged(auth, async (currentUser) => {
   getMySQL();
 });
 
-async function pruebaFetch() {
-  var res = await fetch("http://192.168.77.228:3001/herramientas");
-  var json = await res.json();
-  var result = { data: json };
-  console.log("resultado: ", result);
-  return result;
-}
-
-pruebaFetch();
-
 const getMySQL = () => {
+  // fetch("http://192.168.77.228:3001/sobreMi")
   fetch("https://virtualizacion-back-production.up.railway.app/sobreMi")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       arraySobreMiMySQL = data;
+      // fetch("http://192.168.77.228:3001/estudiante/1")
       fetch(
         "https://virtualizacion-back-production.up.railway.app/estudiante/1"
       )
@@ -67,8 +59,8 @@ const getMySQL = () => {
     })
     .catch((error) => console.log("error-sobre-mi: ", error));
 
-  // fetch("https://virtualizacion-back-production.up.railway.app/herramientas")
-  fetch("http://192.168.77.228:3001/herramientas")
+  // fetch("http://192.168.77.228:3001/herramientas")
+  fetch("https://virtualizacion-back-production.up.railway.app/herramientas")
     .then((response) => {
       return response.json();
     })

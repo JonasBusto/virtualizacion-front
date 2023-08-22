@@ -19,7 +19,7 @@ const loginWithGoogle = async () => {
       ) {
         await setDoc(doc(db, "users", currentUser.user.uid), {
           email: currentUser.user.email,
-          rol: "admin",
+          rol: "user",
         });
       } else {
         await setDoc(doc(db, "users", currentUser.user.uid), {
